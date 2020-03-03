@@ -1,6 +1,6 @@
 def init_board():
     """Returns an empty 3-by-3 board (with zeros)."""
-    board = []
+    board = [['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']]
     return board
 
 
@@ -28,12 +28,29 @@ def has_won(board, player):
 
 def is_full(board):
     """Returns True if board is full."""
-    return False
+    dot = '.'
+    if dot in board:
+        return False
+    else:
+        return True
 
 
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
-    pass
+    head = 2*' ' + '1' + 3*' ' + '2' + 3*' ' + '3' + '\n'
+    print('\n', head)
+    inter_row = (11*" " + "\n" + 2*' ' + 3*"-" + "+" + 3*"-" + "+" + 3*"-" + "\n" + 11 * " ")
+    for i in range(len(board)):
+        if i == 0:
+            row_sign = 'A '
+        elif i == 1:
+            row_sign = 'B '
+        else:
+            row_sign = 'C '
+        print(row_sign, board[i][0], '|', board[i][1], '|', board[i][2])
+        if i < len(board)-1:
+            print(inter_row)
+    print('\n')
 
 
 def print_result(winner):
